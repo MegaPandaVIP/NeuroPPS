@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neurodevelopmental & Psychological Profile Screener</title>
+<style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+    h1, h2, h3 { margin-bottom: 0.5em; }
+    h1 { font-size: 2em; text-align: center; margin-bottom: 1em; }
+    h2 { font-size: 1.5em; margin-top: 2em; color: #333; }
+    .lang-en { display: inline; }
+    .lang-he { display: none; }
+    body.hebrew .lang-en { display: none; }
+    body.hebrew .lang-he { display: inline; }
+    body.hebrew { direction: rtl; text-align: right; }
+    .tabs { text-align: center; margin-bottom: 1em; }
+    .tabs button { font-size: 1em; padding: 0.5em 1em; margin: 0 5px; cursor: pointer; }
+    .tabs button.active { font-weight: bold; text-decoration: underline; }
+    .question { margin: 1em 0; }
+    .options { margin: 0.5em 0 1em 1em; }
+    .options label { display: inline-block; margin-right: 1em; cursor: pointer; }
+    .options input { margin-right: 0.3em; }
+    .progress { font-size: 0.9em; color: #555; margin-bottom: 0.5em; }
+    #results { display: none; border-top: 2px solid #ccc; padding-top: 1em; margin-top: 2em; }
+    #results h2 { text-align: center; margin-bottom: 1em; }
+    #results p { margin: 0.5em 0; }
+    #results .domain { font-weight: bold; }
+    #printBtn { margin-top: 1em; padding: 0.5em 1em; font-size: 1em; cursor: pointer; }
+    @media print {
+        .tabs, #calculateBtn, #printBtn { display: none; }
+        #results { display: block; }
+    }
+</style>
+</head>
+<body>
+
+<h1><span class="lang-en">Neurodevelopmental & Psychological Profile Screener</span><span class="lang-he">מבדק פרופיל נוירו-התפתחותי ופסיכולוגי</span></h1>
+
+<div class="tabs">
+    <button id="engBtn" class="active">English</button>
+    <button id="hebBtn">עברית</button>
+</div>
+
+<form id="screenerForm">
+    <!-- ADHD Section -->
+    <h2><span class="lang-en">Section 1: ADHD</span><span class="lang-he">חלק 1: הפרעת קשב (ADHD)</span></h2>
+    <div class="progress"><span class="lang-en">Section 1 of 8</span><span class="lang-he">קטע 1 מתוך 8</span></div>
+    <div class="question">
+        <p><span class="lang-en">1. How often do you have trouble wrapping up the final details of a project once the challenging parts are done?</span><span class="lang-he">1. האם קשה לך להשלים את הפרטים הקטנים של פרויקט לאחר שסיימת את החלקים המאתגרים?</span></p>
+        <div class="options">
+            <label><input type="radio" name="adhd1" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="adhd1" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="adhd1" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="adhd1" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="adhd1" value="4"><span class="lang-en">Very Often</span><span class="lang-he">תמיד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">2. How often do you have difficulty organizing tasks when you have to do a task that requires organization?</span><span class="lang-he">2. באיזו תכיפות את/ה מתקשה ליצור סדר בדברים כאשר את/ה מבצע/ת משימה המצריכה ארגון?</span></p>
+        <div class="options">
+            <label><input type="radio" name="adhd2" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="adhd2" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="adhd2" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="adhd2" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="adhd2" value="4"><span class="lang-en">Very Often</span><span class="lang-he">תמיד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">3. How often do you have problems remembering appointments or obligations?</span><span class="lang-he">3. באיזו תכיפות את/ה מתקשה לזכור פגישות או התחייבויות?</span></p>
+        <div class="options">
+            <label><input type="radio" name="adhd3" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="adhd3" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="adhd3" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="adhd3" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="adhd3" value="4"><span class="lang-en">Very Often</span><span class="lang-he">תמיד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">4. When a task requires a lot of thought, how often do you avoid or delay getting started?</span><span class="lang-he">4. כאשר מוטלת עליך משימה המצריכה חשיבה מרובה, באיזו תכיפות את/ה נמנע/ת או דוחה את התחלתה?</span></p>
+        <div class="options">
+            <label><input type="radio" name="adhd4" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="adhd4" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="adhd4" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="adhd4" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="adhd4" value="4"><span class="lang-en">Very Often</span><span class="lang-he">תמיד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">5. How often do you fidget or squirm with your hands or feet when you have to sit for a long time?</span><span class="lang-he">5. באיזו תכיפות את/ה מתפתל/ת או מניע/ה בקוצר רוח את ידייך או רגלייך כאשר עליך לשבת זמן רב?</span></p>
+        <div class="options">
+            <label><input type="radio" name="adhd5" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="adhd5" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="adhd5" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="adhd5" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="adhd5" value="4"><span class="lang-en">Very Often</span><span class="lang-he">תמיד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">6. How often do you feel overly active and compelled to do things, as if driven by a motor?</span><span class="lang-he">6. באיזו תכיפות את/ה מרגיש/ה פעיל/ה יתר על המידה או מרגיש/ה צורך לעשות דברים כאילו את/ה מונע/ת על ידי מנוע?</span></p>
+        <div class="options">
+            <label><input type="radio" name="adhd6" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="adhd6" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="adhd6" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="adhd6" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="adhd6" value="4"><span class="lang-en">Very Often</span><span class="lang-he">תמיד</span></label>
+        </div>
+    </div>
+
+    <!-- Autism Section -->
+    <h2><span class="lang-en">Section 2: Autism Spectrum</span><span class="lang-he">חלק 2: רצף האוטיזם</span></h2>
+    <div class="progress"><span class="lang-en">Section 2 of 8</span><span class="lang-he">קטע 2 מתוך 8</span></div>
+    <div class="question">
+        <p><span class="lang-en">1. I notice very small sounds that others do not notice.</span><span class="lang-he">1. אני נוהג/ת לשים לב לרעשים קטנים שאחרים אינם מבחינים בהם.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd1" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd1" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd1" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd1" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd1" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">2. When reading a story, I have difficulty figuring out the characters’ intentions.</span><span class="lang-he">2. כשאני קורא/ת סיפור, קשה לי להבין את הכוונות של הדמויות.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd2" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd2" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd2" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd2" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd2" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">3. I find it difficult to “read between the lines” or pick up on subtle hints when someone is talking to me.</span><span class="lang-he">3. קשה לי "לקרוא בין השורות" כאשר מדברים איתי.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd3" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd3" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd3" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd3" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd3" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">4. I tend to focus on small details rather than the whole picture.</span><span class="lang-he">4. אני מתמקד/ת בפרטים הקטנים יותר מאשר בתמונה הכוללת.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd4" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd4" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd4" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd4" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd4" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">5. I often cannot tell if someone I’m talking to is getting bored.</span><span class="lang-he">5. לעיתים קרובות אינני מזהה כאשר המאזין לי מתחיל להשתעמם.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd5" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd5" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd5" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd5" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd5" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">6. I find it difficult to do more than one thing at once.</span><span class="lang-he">6. קשה לי לעשות יותר מדבר אחד בו-זמנית.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd6" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd6" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd6" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd6" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd6" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">7. I have trouble figuring out what someone is thinking or feeling just by looking at their face.</span><span class="lang-he">7. קשה לי להבין מה מישהו חושב או מרגיש רק מהבעת הפנים שלו.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd7" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd7" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd7" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd7" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd7" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">8. If there is an interruption, I have a hard time quickly resuming what I was doing.</span><span class="lang-he">8. אם מישהו קוטע אותי, קשה לי לחזור במהירות למה שעשיתי.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd8" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd8" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd8" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd8" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd8" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">9. I like to collect information about categories of things (e.g., types of cars, birds, etc.).</span><span class="lang-he">9. אני אוהב/ת לאסוף מידע על קטגוריות של דברים (כגון סוגי מכוניות או ציפורים).</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd9" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd9" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd9" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd9" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd9" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">10. I find it difficult to figure out other people’s intentions.</span><span class="lang-he">10. אני מתקשה להבין את הכוונות של אנשים.</span></p>
+        <div class="options">
+            <label><input type="radio" name="asd10" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="asd10" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="asd10" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="asd10" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="asd10" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+
+    <!-- ODD Section -->
+    <h2><span class="lang-en">Section 3: Oppositional Defiant Disorder (ODD)</span><span class="lang-he">חלק 3: הפרעת התנגדות (ODD)</span></h2>
+    <div class="progress"><span class="lang-en">Section 3 of 8</span><span class="lang-he">קטע 3 מתוך 8</span></div>
+    <div class="question">
+        <p><span class="lang-en">1. Loses temper easily or often.</span><span class="lang-he">1. מאבד את סבלנותו מהר.</span></p>
+        <div class="options">
+            <label><input type="radio" name="odd1" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="odd1" value="1"><span class="lang-en">Rarely</span><span class="lang-he">מדי פעם</span></label>
+            <label><input type="radio" name="odd1" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="odd1" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="odd1" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">2. Often argues with adults or authority figures.</span><span class="lang-he">2. לעיתים קרובות מתווכח עם מבוגרים.</span></p>
+        <div class="options">
+            <label><input type="radio" name="odd2" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="odd2" value="1"><span class="lang-en">Rarely</span><span class="lang-he">מדי פעם</span></label>
+            <label><input type="radio" name="odd2" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="odd2" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="odd2" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">3. Actively defies or refuses to comply with rules or requests.</span><span class="lang-he">3. לעיתים קרובות מסרב או מתנגד לדרישות וחוקים.</span></p>
+        <div class="options">
+            <label><input type="radio" name="odd3" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="odd3" value="1"><span class="lang-en">Rarely</span><span class="lang-he">מדי פעם</span></label>
+            <label><input type="radio" name="odd3" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="odd3" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="odd3" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">4. Deliberately annoys people.</span><span class="lang-he">4. מציק לאחרים באופן מכוון.</span></p>
+        <div class="options">
+            <label><input type="radio" name="odd4" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="odd4" value="1"><span class="lang-en">Rarely</span><span class="lang-he">מדי פעם</span></label>
+            <label><input type="radio" name="odd4" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="odd4" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="odd4" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">5. Blames others for their own mistakes or misbehavior.</span><span class="lang-he">5. נוטה להאשים אחרים.</span></p>
+        <div class="options">
+            <label><input type="radio" name="odd5" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="odd5" value="1"><span class="lang-en">Rarely</span><span class="lang-he">מדי פעם</span></label>
+            <label><input type="radio" name="odd5" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="odd5" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="odd5" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">6. Is easily annoyed or touchy.</span><span class="lang-he">6. סף גירוי ותסכול נמוכים (נעלב/ת בקלות).</span></p>
+        <div class="options">
+            <label><input type="radio" name="odd6" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="odd6" value="1"><span class="lang-en">Rarely</span><span class="lang-he">מדי פעם</span></label>
+            <label><input type="radio" name="odd6" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="odd6" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="odd6" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">7. Is angry and resentful.</span><span class="lang-he">7. כעוס ומלא התנגדות.</span></p>
+        <div class="options">
+            <label><input type="radio" name="odd7" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="odd7" value="1"><span class="lang-en">Rarely</span><span class="lang-he">מדי פעם</span></label>
+            <label><input type="radio" name="odd7" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="odd7" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="odd7" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">8. Is spiteful or vindictive (seeks revenge).</span><span class="lang-he">8. נקמני ונוטר טינה.</span></p>
+        <div class="options">
+            <label><input type="radio" name="odd8" value="0" required><span class="lang-en">Never</span><span class="lang-he">אף פעם</span></label>
+            <label><input type="radio" name="odd8" value="1"><span class="lang-en">Rarely</span><span class="lang-he">מדי פעם</span></label>
+            <label><input type="radio" name="odd8" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="odd8" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="odd8" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+
+    <!-- OCD Section -->
+    <h2><span class="lang-en">Section 4: Obsessive-Compulsive Disorder (OCD)</span><span class="lang-he">חלק 4: הפרעה טורדנית-כפייתית (OCD)</span></h2>
+    <div class="progress"><span class="lang-en">Section 4 of 8</span><span class="lang-he">קטע 4 מתוך 8</span></div>
+    <div class="question">
+        <p><span class="lang-en">1. I have unpleasant thoughts or images that intrude in my mind against my will.</span><span class="lang-he">1. יש לי מחשבות לא נעימות שמטרידות אותי ועולות בניגוד לרצוני.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ocd1" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="ocd1" value="1"><span class="lang-en">A little</span><span class="lang-he">במידה מועטה</span></label>
+            <label><input type="radio" name="ocd1" value="2"><span class="lang-en">Moderately</span><span class="lang-he">באופן בינוני</span></label>
+            <label><input type="radio" name="ocd1" value="3"><span class="lang-en">A lot</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="ocd1" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">2. I feel compelled to perform certain behaviors or routines excessively and have trouble resisting these urges.</span><span class="lang-he">2. אני מבצע/ת פעולות מסוימות באופן מוגזם ואיני מצליח/ה להתנגד לדחף לבצע אותן.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ocd2" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="ocd2" value="1"><span class="lang-en">A little</span><span class="lang-he">במידה מועטה</span></label>
+            <label><input type="radio" name="ocd2" value="2"><span class="lang-en">Moderately</span><span class="lang-he">באופן בינוני</span></label>
+            <label><input type="radio" name="ocd2" value="3"><span class="lang-en">A lot</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="ocd2" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">3. I tend to repeatedly check things (such as doors, locks, appliances) to make sure I did them correctly.</span><span class="lang-he">3. אני נוהג/ת לחזור ולבדוק שביצעתי דברים מסוימים (למשל, נעלתי את הדלת או כיביתי את הגז).</span></p>
+        <div class="options">
+            <label><input type="radio" name="ocd3" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="ocd3" value="1"><span class="lang-en">A little</span><span class="lang-he">במידה מועטה</span></label>
+            <label><input type="radio" name="ocd3" value="2"><span class="lang-en">Moderately</span><span class="lang-he">באופן בינוני</span></label>
+            <label><input type="radio" name="ocd3" value="3"><span class="lang-en">A lot</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="ocd3" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">4. I wash my hands or clean excessively because I feel contaminated or unclean.</span><span class="lang-he">4. אני שוטפ/ת ידיים לעיתים קרובות מאוד או מתרחצ/ת יותר מהרגיל בגלל תחושת לכלוך או זיהום.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ocd4" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="ocd4" value="1"><span class="lang-en">A little</span><span class="lang-he">במידה מועטה</span></label>
+            <label><input type="radio" name="ocd4" value="2"><span class="lang-en">Moderately</span><span class="lang-he">באופן בינוני</span></label>
+            <label><input type="radio" name="ocd4" value="3"><span class="lang-en">A lot</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="ocd4" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">5. I get very upset if my things are not arranged in a certain way or if someone changes the order.</span><span class="lang-he">5. אני מתרגז/ת כשמישהו משנה את הסדר שבו החפצים שלי מאורגנים.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ocd5" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="ocd5" value="1"><span class="lang-en">A little</span><span class="lang-he">במידה מועטה</span></label>
+            <label><input type="radio" name="ocd5" value="2"><span class="lang-en">Moderately</span><span class="lang-he">באופן בינוני</span></label>
+            <label><input type="radio" name="ocd5" value="3"><span class="lang-en">A lot</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="ocd5" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">6. I avoid throwing things away because I am afraid I might need them later.</span><span class="lang-he">6. אני נמנע/ת מלזרוק חפצים כי אני חושש/ת שאזדקק להם בעתיד.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ocd6" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="ocd6" value="1"><span class="lang-en">A little</span><span class="lang-he">במידה מועטה</span></label>
+            <label><input type="radio" name="ocd6" value="2"><span class="lang-en">Moderately</span><span class="lang-he">באופן בינוני</span></label>
+            <label><input type="radio" name="ocd6" value="3"><span class="lang-en">A lot</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="ocd6" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+
+    <!-- Anxiety Section -->
+    <h2><span class="lang-en">Section 5: Anxiety Disorders</span><span class="lang-he">חלק 5: הפרעות חרדה</span></h2>
+    <div class="progress"><span class="lang-en">Section 5 of 8</span><span class="lang-he">קטע 5 מתוך 8</span></div>
+    <p><span class="lang-en"><em>Over the last two weeks, how often have you been bothered by the following problems?</em></span><span class="lang-he"><em>במהלך השבועיים האחרונים, באיזו תדירות הוטרדת מהבעיות הבאות?</em></span></p>
+    <div class="question">
+        <p><span class="lang-en">1. Feeling nervous, anxious or on edge</span><span class="lang-he">1. תחושת עצבנות, חרדה או דריכות</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_gad1" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_gad1" value="1"><span class="lang-en">Several days</span><span class="lang-he">מספר ימים</span></label>
+            <label><input type="radio" name="anx_gad1" value="2"><span class="lang-en">Over half the days</span><span class="lang-he">יותר ממחצית הימים</span></label>
+            <label><input type="radio" name="anx_gad1" value="3"><span class="lang-en">Nearly every day</span><span class="lang-he">כמעט כל יום</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">2. Not being able to stop or control worrying</span><span class="lang-he">2. קושי להפסיק או לשלוט בדאגה</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_gad2" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_gad2" value="1"><span class="lang-en">Several days</span><span class="lang-he">מספר ימים</span></label>
+            <label><input type="radio" name="anx_gad2" value="2"><span class="lang-en">Over half the days</span><span class="lang-he">יותר ממחצית הימים</span></label>
+            <label><input type="radio" name="anx_gad2" value="3"><span class="lang-en">Nearly every day</span><span class="lang-he">כמעט כל יום</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">3. Worrying too much about different things</span><span class="lang-he">3. דאגה מוגזמת לגבי דברים רבים</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_gad3" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_gad3" value="1"><span class="lang-en">Several days</span><span class="lang-he">מספר ימים</span></label>
+            <label><input type="radio" name="anx_gad3" value="2"><span class="lang-en">Over half the days</span><span class="lang-he">יותר ממחצית הימים</span></label>
+            <label><input type="radio" name="anx_gad3" value="3"><span class="lang-en">Nearly every day</span><span class="lang-he">כמעט כל יום</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">4. Trouble relaxing</span><span class="lang-he">4. קושי להירגע</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_gad4" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_gad4" value="1"><span class="lang-en">Several days</span><span class="lang-he">מספר ימים</span></label>
+            <label><input type="radio" name="anx_gad4" value="2"><span class="lang-en">Over half the days</span><span class="lang-he">יותר ממחצית הימים</span></label>
+            <label><input type="radio" name="anx_gad4" value="3"><span class="lang-en">Nearly every day</span><span class="lang-he">כמעט כל יום</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">5. Being so restless that it’s hard to sit still</span><span class="lang-he">5. חוסר מנוחה המפריע לשבת בשקט</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_gad5" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_gad5" value="1"><span class="lang-en">Several days</span><span class="lang-he">מספר ימים</span></label>
+            <label><input type="radio" name="anx_gad5" value="2"><span class="lang-en">Over half the days</span><span class="lang-he">יותר ממחצית הימים</span></label>
+            <label><input type="radio" name="anx_gad5" value="3"><span class="lang-en">Nearly every day</span><span class="lang-he">כמעט כל יום</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">6. Becoming easily annoyed or irritable</span><span class="lang-he">6. נעשה עצבני או רגזן בקלות</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_gad6" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_gad6" value="1"><span class="lang-en">Several days</span><span class="lang-he">מספר ימים</span></label>
+            <label><input type="radio" name="anx_gad6" value="2"><span class="lang-en">Over half the days</span><span class="lang-he">יותר ממחצית הימים</span></label>
+            <label><input type="radio" name="anx_gad6" value="3"><span class="lang-en">Nearly every day</span><span class="lang-he">כמעט כל יום</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">7. Feeling afraid as if something awful might happen</span><span class="lang-he">7. חש/ה פחד כאילו משהו נורא עומד לקרות</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_gad7" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_gad7" value="1"><span class="lang-en">Several days</span><span class="lang-he">מספר ימים</span></label>
+            <label><input type="radio" name="anx_gad7" value="2"><span class="lang-en">Over half the days</span><span class="lang-he">יותר ממחצית הימים</span></label>
+            <label><input type="radio" name="anx_gad7" value="3"><span class="lang-en">Nearly every day</span><span class="lang-he">כמעט כל יום</span></label>
+        </div>
+    </div>
+    <p><span class="lang-en"><em>Social Anxiety (answer according to how you generally feel):</em></span><span class="lang-he"><em>חרדה חברתית (דרג/י לפי הרגשתך בדרך כלל):</em></span></p>
+    <div class="question">
+        <p><span class="lang-en">8. I avoid doing things or speaking to people because I’m afraid of embarrassment.</span><span class="lang-he">8. אני נמנע/ת מלעשות דברים או מלדבר עם אנשים בגלל פחד ממבוכה.</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_soc1" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_soc1" value="1"><span class="lang-en">A little</span><span class="lang-he">מעט</span></label>
+            <label><input type="radio" name="anx_soc1" value="2"><span class="lang-en">Somewhat</span><span class="lang-he">במידה מסוימת</span></label>
+            <label><input type="radio" name="anx_soc1" value="3"><span class="lang-en">Very much</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="anx_soc1" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">9. I avoid activities where I am the center of attention.</span><span class="lang-he">9. אני נמנע/ת מפעילויות שבהן אני במרכז תשומת הלב.</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_soc2" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_soc2" value="1"><span class="lang-en">A little</span><span class="lang-he">מעט</span></label>
+            <label><input type="radio" name="anx_soc2" value="2"><span class="lang-en">Somewhat</span><span class="lang-he">במידה מסוימת</span></label>
+            <label><input type="radio" name="anx_soc2" value="3"><span class="lang-en">Very much</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="anx_soc2" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">10. Being embarrassed or looking stupid is one of my biggest fears.</span><span class="lang-he">10. להיות נבוכ/ה או להיראות טיפש/ה זה אחד מהפחדים הגדולים ביותר שלי.</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_soc3" value="0" required><span class="lang-en">Not at all</span><span class="lang-he">כלל לא</span></label>
+            <label><input type="radio" name="anx_soc3" value="1"><span class="lang-en">A little</span><span class="lang-he">מעט</span></label>
+            <label><input type="radio" name="anx_soc3" value="2"><span class="lang-en">Somewhat</span><span class="lang-he">במידה מסוימת</span></label>
+            <label><input type="radio" name="anx_soc3" value="3"><span class="lang-en">Very much</span><span class="lang-he">במידה רבה</span></label>
+            <label><input type="radio" name="anx_soc3" value="4"><span class="lang-en">Extremely</span><span class="lang-he">מאוד</span></label>
+        </div>
+    </div>
+    <p><span class="lang-en"><em>Specific Phobia:</em></span><span class="lang-he"><em>פוביה ספציפית:</em></span></p>
+    <div class="question">
+        <p><span class="lang-en">11. I have an intense fear of a specific object or situation (such as an animal, heights, flying, seeing blood, etc.) and I go out of my way to avoid it.</span><span class="lang-he">11. יש לי פחד חזק וממוקד מאובייקט או ממצב מסוים (כגון חיה, גובה, טיסה, דם וכד') ואני עושה הכל כדי להימנע ממנו.</span></p>
+        <div class="options">
+            <label><input type="radio" name="anx_phobia" value="0" required><span class="lang-en">No</span><span class="lang-he">לא</span></label>
+            <label><input type="radio" name="anx_phobia" value="1"><span class="lang-en">Yes (mild)</span><span class="lang-he">כן (קל)</span></label>
+            <label><input type="radio" name="anx_phobia" value="2"><span class="lang-en">Yes (moderate)</span><span class="lang-he">כן (בינוני)</span></label>
+            <label><input type="radio" name="anx_phobia" value="3"><span class="lang-en">Yes (severe)</span><span class="lang-he">כן (חמור)</span></label>
+            <label><input type="radio" name="anx_phobia" value="4"><span class="lang-en">Yes (very severe)</span><span class="lang-he">כן (חמור מאוד)</span></label>
+        </div>
+    </div>
+
+    <!-- Dyslexia Section -->
+    <h2><span class="lang-en">Section 6: Dyslexia & Learning Disorders</span><span class="lang-he">חלק 6: דיסלקסיה והפרעות למידה</span></h2>
+    <div class="progress"><span class="lang-en">Section 6 of 8</span><span class="lang-he">קטע 6 מתוך 8</span></div>
+    <div class="question">
+        <p><span class="lang-en">1. I struggled with learning to read during school (needed extra help or took longer than others).</span><span class="lang-he">1. התקשיתי ללמוד לקרוא בבית הספר.</span></p>
+        <div class="options">
+            <label><input type="radio" name="dys1" value="0" required><span class="lang-en">No difficulty</span><span class="lang-he">בכלל לא</span></label>
+            <label><input type="radio" name="dys1" value="1"><span class="lang-en">Mild difficulty</span><span class="lang-he">קושי קל</span></label>
+            <label><input type="radio" name="dys1" value="2"><span class="lang-en">Moderate difficulty</span><span class="lang-he">קושי בינוני</span></label>
+            <label><input type="radio" name="dys1" value="3"><span class="lang-en">Serious difficulty</span><span class="lang-he">קושי משמעותי</span></label>
+            <label><input type="radio" name="dys1" value="4"><span class="lang-en">Severe (very hard to learn)</span><span class="lang-he">קושי חמור מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">2. I often have trouble with spelling and frequently misspell words.</span><span class="lang-he">2. יש לי קושי באיות מילים ואני מרבה לשגות בכתיב.</span></p>
+        <div class="options">
+            <label><input type="radio" name="dys2" value="0" required><span class="lang-en">No</span><span class="lang-he">לא</span></label>
+            <label><input type="radio" name="dys2" value="1"><span class="lang-en">Seldom</span><span class="lang-he">לעיתים נדירות</span></label>
+            <label><input type="radio" name="dys2" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="dys2" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="dys2" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">3. I sometimes mix up or reverse the order of letters or numbers when reading or writing.</span><span class="lang-he">3. אני לעיתים מחליפ/ה או הופך/ת סדר של אותיות ומספרים בקריאה או כתיבה.</span></p>
+        <div class="options">
+            <label><input type="radio" name="dys3" value="0" required><span class="lang-en">No</span><span class="lang-he">לא</span></label>
+            <label><input type="radio" name="dys3" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים נדירות</span></label>
+            <label><input type="radio" name="dys3" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="dys3" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="dys3" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">4. I have difficulty with basic math or remembering math facts (like multiplication tables).</span><span class="lang-he">4. אני מתקשה בלימוד עובדות חשבון פשוטות (כמו לוח הכפל).</span></p>
+        <div class="options">
+            <label><input type="radio" name="dys4" value="0" required><span class="lang-en">No</span><span class="lang-he">לא</span></label>
+            <label><input type="radio" name="dys4" value="1"><span class="lang-en">Rarely</span><span class="lang-he">לעיתים רחוקות</span></label>
+            <label><input type="radio" name="dys4" value="2"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="dys4" value="3"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="dys4" value="4"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+
+    <!-- Executive Function Section -->
+    <h2><span class="lang-en">Section 7: Executive Function (ESQ-R)</span><span class="lang-he">חלק 7: תפקודים ניהוליים</span></h2>
+    <div class="progress"><span class="lang-en">Section 7 of 8</span><span class="lang-he">קטע 7 מתוך 8</span></div>
+    <div class="question">
+        <p><span class="lang-en">1. I act on impulse without thinking.</span><span class="lang-he">1. אני פועל/ת באימפולסיביות.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef1" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef1" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef1" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef1" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">2. I say things without thinking.</span><span class="lang-he">2. אני אומר/ת דברים בלי לחשוב.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef2" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef2" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef2" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef2" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">3. I frequently lose or misplace things.</span><span class="lang-he">3. אני מאבד/ת חפצים לעיתים קרובות.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef3" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef3" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef3" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef3" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">4. I have a short temper or “short fuse”.</span><span class="lang-he">4. יש לי "פתיל קצר" (מתעצבן/ת בקלות).</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef4" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef4" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef4" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef4" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">5. I run out of energy before finishing tasks.</span><span class="lang-he">5. נגמר לי הכוח לפני שאני מסיים/ת משימות.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef5" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef5" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef5" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef5" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">6. I get upset when things don’t go as planned.</span><span class="lang-he">6. אני כועס/ת כאשר דברים אינם מתנהלים כמתוכנן.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef6" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef6" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef6" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef6" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">7. I have trouble setting priorities when I have many things to do.</span><span class="lang-he">7. קשה לי לקבוע סדר עדיפויות כשיש הרבה משימות.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef7" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef7" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef7" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef7" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">8. My desk or work area is very disorganized or messy.</span><span class="lang-he">8. סביבת העבודה שלי מבולגנת.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef8" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef8" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef8" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef8" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">9. I have trouble estimating how long tasks will take.</span><span class="lang-he">9. קשה לי להעריך כמה זמן ייקח לסיים משימה.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef9" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef9" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef9" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef9" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">10. I am slow at getting ready for work or appointments and often end up late.</span><span class="lang-he">10. אני מתכוננ/ת לאט ופעמים רבות מאחר/ת לפגישות או לעבודה.</span></p>
+        <div class="options">
+            <label><input type="radio" name="ef10" value="0" required><span class="lang-en">Never or rarely</span><span class="lang-he">לעולם לא או לעיתים רחוקות</span></label>
+            <label><input type="radio" name="ef10" value="1"><span class="lang-en">Sometimes</span><span class="lang-he">לפעמים</span></label>
+            <label><input type="radio" name="ef10" value="2"><span class="lang-en">Often</span><span class="lang-he">לעיתים קרובות</span></label>
+            <label><input type="radio" name="ef10" value="3"><span class="lang-en">Very Often</span><span class="lang-he">לעיתים קרובות מאוד</span></label>
+        </div>
+    </div>
+
+    <!-- IQ Section -->
+    <h2><span class="lang-en">Section 8: Culture-Fair IQ (Logical Reasoning)</span><span class="lang-he">חלק 8: מבחן IQ הוגן תרבותית (היגיון ויזואלי)</span></h2>
+    <div class="progress"><span class="lang-en">Section 8 of 8</span><span class="lang-he">קטע 8 מתוך 8</span></div>
+    <div class="question">
+        <p><span class="lang-en">1. What number should come next in the sequence: 1, 2, 4, 7, 11, ...?</span><span class="lang-he">1. איזה מספר צריך לבוא הבא בסדרה: 1, 2, 4, 7, 11, ...?</span></p>
+        <div class="options">
+            <label><input type="radio" name="iq1" value="0" required><span class="lang-en">15</span><span class="lang-he">15</span></label>
+            <label><input type="radio" name="iq1" value="1"><span class="lang-en">16</span><span class="lang-he">16</span></label>
+            <label><input type="radio" name="iq1" value="0"><span class="lang-en">19</span><span class="lang-he">19</span></label>
+            <label><input type="radio" name="iq1" value="0"><span class="lang-en">22</span><span class="lang-he">22</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">2. Which shape logically comes next in this series: Circle, Triangle, Square, Pentagon, Hexagon, ...?</span><span class="lang-he">2. איזו צורה באה באופן הגיוני הבאה בסדרה: עיגול, משולש, ריבוע, מחומש, משושה, ...?</span></p>
+        <div class="options">
+            <label><input type="radio" name="iq2" value="1" required><span class="lang-en">Heptagon (7-sided)</span><span class="lang-he">מצולע בעל 7 צלעות</span></label>
+            <label><input type="radio" name="iq2" value="0"><span class="lang-en">Octagon (8-sided)</span><span class="lang-he">מצולע בעל 8 צלעות</span></label>
+            <label><input type="radio" name="iq2" value="0"><span class="lang-en">Decagon (10-sided)</span><span class="lang-he">מצולע בעל 10 צלעות</span></label>
+            <label><input type="radio" name="iq2" value="0"><span class="lang-en">Circle</span><span class="lang-he">עיגול</span></label>
+        </div>
+    </div>
+    <div class="question">
+        <p><span class="lang-en">3. All bloops are dupes, and all dupes are quips. Does it logically follow that all bloops are quips?</span><span class="lang-he">3. בהנחה שכל "בלופ" הוא "דופ", וכל "דופ" הוא "קוויפ", האם נובע בהכרח שכל "בלופ" הוא "קוויפ"?</span></p>
+        <div class="options">
+            <label><input type="radio" name="iq3" value="1" required><span class="lang-en">Yes</span><span class="lang-he">כן</span></label>
+            <label><input type="radio" name="iq3" value="0"><span class="lang-en">No</span><span class="lang-he">לא</span></label>
+            <label><input type="radio" name="iq3" value="0"><span class="lang-en">Not necessarily</span><span class="lang-he">לא בהכרח</span></label>
+        </div>
+    </div>
+
+    <button type="button" id="calculateBtn"><span class="lang-en">Calculate Results</span><span class="lang-he">חשב תוצאות</span></button>
+</form>
+
+<div id="results">
+    <h2><span class="lang-en">Screening Results</span><span class="lang-he">תוצאות הסקירה</span></h2>
+    <p class="domain"><span class="lang-en">ADHD:</span><span class="lang-he">ADHD (הפרעת קשב):</span> <span id="resADHD"></span></p>
+    <p class="domain"><span class="lang-en">Autism Spectrum:</span><span class="lang-he">רצף האוטיזם:</span> <span id="resASD"></span></p>
+    <p class="domain"><span class="lang-en">Oppositional Defiant Disorder:</span><span class="lang-he">הפרעת התנגדות:</span> <span id="resODD"></span></p>
+    <p class="domain"><span class="lang-en">Obsessive-Compulsive Disorder:</span><span class="lang-he">הפרעה טורדנית-כפייתית:</span> <span id="resOCD"></span></p>
+    <p class="domain"><span class="lang-en">Anxiety:</span><span class="lang-he">חרדה:</span> <span id="resAnx"></span></p>
+    <p class="domain"><span class="lang-en">Dyslexia/Learning:</span><span class="lang-he">דיסלקסיה/למידה:</span> <span id="resDys"></span></p>
+    <p class="domain"><span class="lang-en">Executive Function:</span><span class="lang-he">תפקודים ניהוליים:</span> <span id="resEF"></span></p>
+    <p class="domain"><span class="lang-en">IQ (Reasoning):</span><span class="lang-he">IQ (היגיון):</span> <span id="resIQ"></span></p>
+    <button id="printBtn"><span class="lang-en">Print to PDF</span><span class="lang-he">הדפס/י ל-PDF</span></button>
+    <h3><span class="lang-en">References</span><span class="lang-he">מקורות</span></h3>
+    <div dir="ltr" style="font-size:0.9em; color:#333;">
+        <ol>
+            <li>World Health Organization Adult ADHD Self-Report Scale (ASRS v1.1):contentReference[oaicite:0]{index=0}</li>
+            <li>Allison C. et al. (2012). Autism Spectrum Quotient 10-item (AQ-10):contentReference[oaicite:1]{index=1}</li>
+            <li>NICHQ Vanderbilt Assessment Scale – Oppositional Defiant Disorder Subscale:contentReference[oaicite:2]{index=2}</li>
+            <li>Foa E.B. et al. (1998). Obsessive-Compulsive Inventory (OCI):contentReference[oaicite:3]{index=3}</li>
+            <li>Spitzer R.L. et al. (2006). Generalized Anxiety Disorder 7 (GAD-7) Scale:contentReference[oaicite:4]{index=4}</li>
+            <li>British Dyslexia Association – Adult Dyslexia Checklist:contentReference[oaicite:5]{index=5}</li>
+            <li>Strait J.E. et al. (2019). Executive Skills Questionnaire–Revised (ESQ-R):contentReference[oaicite:6]{index=6}:contentReference[oaicite:7]{index=7}</li>
+            <li>Raven J. (1938). Raven’s Progressive Matrices (culture-fair IQ test):contentReference[oaicite:8]{index=8}:contentReference[oaicite:9]{index=9}</li>
+        </ol>
+    </div>
+</div>
+
+<script>
+document.getElementById('engBtn').onclick = function() {
+    document.body.classList.remove('hebrew');
+    document.getElementById('engBtn').classList.add('active');
+    document.getElementById('hebBtn').classList.remove('active');
+};
+document.getElementById('hebBtn').onclick = function() {
+    document.body.classList.add('hebrew');
+    document.getElementById('hebBtn').classList.add('active');
+    document.getElementById('engBtn').classList.remove('active');
+};
+
+document.getElementById('calculateBtn').onclick = function() {
+    // Get form data
+    var form = document.getElementById('screenerForm');
+    if (!form.reportValidity()) {
+        return;
+    }
+    var data = new FormData(form);
+
+    // ADHD
+    var adhdScores = [];
+    for(var i=1;i<=6;i++){ adhdScores.push(parseInt(data.get('adhd'+i))); }
+    var adhdHighCount = adhdScores.filter(v=>v>=3).length;
+    var inattHigh = adhdScores.slice(0,4).filter(v=>v>=3).length;
+    var hyperHigh = adhdScores.slice(4).filter(v=>v>=3).length;
+    var adhdResult = "";
+    if(adhdHighCount >= 4) {
+        // Determine subtype
+        if(inattHigh >= 3 && hyperHigh < 2) {
+            adhdResult = "<span class='lang-en'>Likely ADHD (Predominantly Inattentive Type)</span><span class='lang-he'>סביר להניח ADHD מסוג קשב (Predominantly Inattentive)</span>";
+        } else if(hyperHigh == 2 && inattHigh < 3) {
+            adhdResult = "<span class='lang-en'>Likely ADHD (Predominantly Hyperactive/Impulsive Type)</span><span class='lang-he'>סביר להניח ADHD מסוג היפראקטיבי/אימפולסיבי</span>";
+        } else if(inattHigh >= 3 && hyperHigh == 2) {
+            adhdResult = "<span class='lang-en'>Likely ADHD (Combined Type)</span><span class='lang-he'>סביר להניח ADHD מסוג משולב</span>";
+        } else {
+            adhdResult = "<span class='lang-en'>Likely ADHD</span><span class='lang-he'>סביר להניח ADHD</span>";
+        }
+    } else if(adhdHighCount >= 2) {
+        adhdResult = "<span class='lang-en'>Some ADHD symptoms noted (but below diagnostic threshold)</span><span class='lang-he'>הופיעו מספר סימפטומים של ADHD (אך מתחת לסף האבחוני)</span>";
+    } else {
+        adhdResult = "<span class='lang-en'>No significant signs of ADHD</span><span class='lang-he'>אין סימנים משמעותיים ל-ADHD</span>";
+    }
+    document.getElementById('resADHD').innerHTML = adhdResult;
+
+    // Autism
+    var asdScores = [];
+    for(var i=1;i<=10;i++){ asdScores.push(parseInt(data.get('asd'+i))); }
+    var asdHighCount = asdScores.filter(v=>v>=3).length;
+    var asdResult = "";
+    if(asdHighCount >= 6) {
+        // determine level by count
+        var level = "";
+        if(asdHighCount <= 7) level = "<span class='lang-en'>Level 1 (Requiring Support)</span><span class='lang-he'>רמה 1 (דורש תמיכה)</span>";
+        else if(asdHighCount <= 9) level = "<span class='lang-en'>Level 2 (Requiring Substantial Support)</span><span class='lang-he'>רמה 2 (דורש תמיכה ניכרת)</span>";
+        else level = "<span class='lang-en'>Level 3 (Requiring Very Substantial Support)</span><span class='lang-he'>רמה 3 (דורש תמיכה משמעותית מאוד)</span>";
+        asdResult = "<span class='lang-en'>Possible Autism Spectrum Disorder, </span>" + level +
+                    "<span class='lang-he'>קיים חשד להפרעה בספקטרום האוטיזם, </span>";
+    } else if(asdHighCount >= 3) {
+        asdResult = "<span class='lang-en'>Some autistic traits present (below screening cutoff)</span><span class='lang-he'>ישנם מספר מאפיינים אוטיסטיים (מתחת לסף הסינון)</span>";
+    } else {
+        asdResult = "<span class='lang-en'>No notable autistic traits</span><span class='lang-he'>אין מאפיינים אוטיסטיים בולטים</span>";
+    }
+    document.getElementById('resASD').innerHTML = asdResult;
+
+    // ODD
+    var oddScores = [];
+    for(var i=1;i<=8;i++){ oddScores.push(parseInt(data.get('odd'+i))); }
+    var oddHighCount = oddScores.filter(v=>v>=3).length;
+    var oddResult = "";
+    if(oddHighCount >= 4) {
+        if(oddHighCount >= 7) {
+            oddResult = "<span class='lang-en'>Strong indication of ODD (many symptoms present)</span><span class='lang-he'>ההערכה מצביעה בבירור על ODD (רבים מהתסמינים מופיעים)</span>";
+        } else {
+            oddResult = "<span class='lang-en'>Likely ODD (oppositional behavior above threshold)</span><span class='lang-he'>סביר להניח ODD (התנהגות מתנגדת מעל לסף)</span>";
+        }
+    } else if(oddHighCount >= 2) {
+        oddResult = "<span class='lang-en'>Some oppositional defiant behaviors noted</span><span class='lang-he'>ניכרת התנהגות מתנגדת מסוימת</span>";
+    } else {
+        oddResult = "<span class='lang-en'>No significant ODD symptoms</span><span class='lang-he'>אין סימפטומים משמעותיים של ODD</span>";
+    }
+    document.getElementById('resODD').innerHTML = oddResult;
+
+    // OCD
+    var ocdScores = [];
+    for(var i=1;i<=6;i++){ ocdScores.push(parseInt(data.get('ocd'+i))); }
+    var ocdTotal = ocdScores.reduce((a,b)=>a+b,0);
+    var ocdResult = "";
+    if(ocdTotal >= 18) {
+        ocdResult = "<span class='lang-en'>Severe OCD symptoms (high distress and frequency)</span><span class='lang-he'>תסמינים חמורים של OCD (מצוקה ותדירות גבוהות)</span>";
+    } else if(ocdTotal >= 12) {
+        ocdResult = "<span class='lang-en'>Moderate OCD symptoms</span><span class='lang-he'>תסמיני OCD בינוניים</span>";
+    } else if(ocdTotal >= 6) {
+        ocdResult = "<span class='lang-en'>Mild OCD symptoms</span><span class='lang-he'>תסמיני OCD קלים</span>";
+    } else {
+        ocdResult = "<span class='lang-en'>No significant OCD symptoms</span><span class='lang-he'>אין תסמינים משמעותיים של OCD</span>";
+    }
+    document.getElementById('resOCD').innerHTML = ocdResult;
+
+    // Anxiety
+    // GAD-7 score from anx_gad1..7 values 0-3
+    var gadScore = 0;
+    for(var i=1;i<=7;i++){ gadScore += parseInt(data.get('anx_gad'+i)); }
+    var gadResult = "";
+    if(gadScore >= 15) gadResult = "<span class='lang-en'>Severe generalized anxiety</span><span class='lang-he'>חרדה כללית חמורה</span>";
+    else if(gadScore >= 10) gadResult = "<span class='lang-en'>Moderate generalized anxiety</span><span class='lang-he'>חרדה כללית בינונית</span>";
+    else if(gadScore >= 5) gadResult = "<span class='lang-en'>Mild generalized anxiety</span><span class='lang-he'>חרדה כללית קלה</span>";
+    else gadResult = "<span class='lang-en'>Minimal anxiety</span><span class='lang-he'>רמת חרדה מזערית</span>";
+
+    // Social anxiety from anx_soc1..3 (0-4 scale).
+    var socScore = parseInt(data.get('anx_soc1')) + parseInt(data.get('anx_soc2')) + parseInt(data.get('anx_soc3'));
+    var socResult = "";
+    if(socScore >= 6 || [data.get('anx_soc1'), data.get('anx_soc2'), data.get('anx_soc3')].filter(v=>parseInt(v)>=3).length >= 2) {
+        socResult = "<span class='lang-en'>Likely Social Anxiety (social phobia)</span><span class='lang-he'>סביר להניח חרדה חברתית</span>";
+    } else if(socScore >= 3) {
+        socResult = "<span class='lang-en'>Some social anxiety tendencies</span><span class='lang-he'>נטייה מסוימת לחרדה חברתית</span>";
+    } else {
+        socResult = "<span class='lang-en'>No significant social anxiety</span><span class='lang-he'>אין סימני חרדה חברתית משמעותיים</span>";
+    }
+
+    // Specific phobia
+    var phobiaVal = parseInt(data.get('anx_phobia'));
+    var phResult = "";
+    if(phobiaVal >= 3) {
+        phResult = "<span class='lang-en'>Significant specific phobia (strong fear/avoidance reported)</span><span class='lang-he'>פוביה ספציפית משמעותית (דווח על פחד/הימנעות חזקים)</span>";
+    } else if(phobiaVal >= 1) {
+        phResult = "<span class='lang-en'>Possible mild specific phobia</span><span class='lang-he'>ייתכן פוביה ספציפית קלה</span>";
+    } else {
+        phResult = "<span class='lang-en'>No indication of specific phobia</span><span class='lang-he'>אין עדות לפוביה ספציפית</span>";
+    }
+
+    document.getElementById('resAnx').innerHTML = gadResult + 
+        "<span class='lang-en'>; </span><span class='lang-he'>; </span>" + socResult + 
+        "<span class='lang-en'>; </span><span class='lang-he'>; </span>" + phResult;
+
+    // Dyslexia
+    var dysScores = [];
+    for(var i=1;i<=4;i++){ dysScores.push(parseInt(data.get('dys'+i))); }
+    var dysHighCount = dysScores.filter(v=>v>=3).length;
+    var dysResult = "";
+    if(dysHighCount >= 2 || dysScores.reduce((a,b)=>a+b,0) >= 8) {
+        dysResult = "<span class='lang-en'>Likely Dyslexia or related learning disorder (reading/spelling difficulties noted)</span><span class='lang-he'>סביר להניח דיסלקסיה או לקות למידה דומה (ניכרים קשיים בקריאה/איות)</span>";
+    } else if(dysHighCount == 1) {
+        dysResult = "<span class='lang-en'>Some difficulties in reading/spelling or math (learning differences possible)</span><span class='lang-he'>ישנם קשיים מסוימים בקריאה/כתיב או בחשבון (יתכן שוני בלמידה)</span>";
+    } else {
+        dysResult = "<span class='lang-en'>No significant signs of dyslexia or learning disorder</span><span class='lang-he'>אין סימנים משמעותיים לדיסלקסיה או לקות למידה</span>";
+    }
+    document.getElementById('resDys').innerHTML = dysResult;
+
+    // Executive Function
+    var efScores = [];
+    for(var i=1;i<=10;i++){ efScores.push(parseInt(data.get('ef'+i))); }
+    var efHighCount = efScores.filter(v=>v>=2).length;
+    var efResult = "";
+    if(efHighCount >= 6) {
+        efResult = "<span class='lang-en'>Significant executive function challenges (issues with organization, impulse control, etc.)</span><span class='lang-he'>קשיים משמעותיים בתפקודים הניהוליים (בעיות בארגון, בשליטה עצמית וכד')</span>";
+    } else if(efHighCount >= 3) {
+        efResult = "<span class='lang-en'>Some executive function weaknesses noted</span><span class='lang-he'>ניכרים מספר קשיים בתפקודים הניהוליים</span>";
+    } else {
+        efResult = "<span class='lang-en'>No major executive function issues reported</span><span class='lang-he'>לא דווחו בעיות משמעותיות בתפקודים הניהוליים</span>";
+    }
+    document.getElementById('resEF').innerHTML = efResult;
+
+    // IQ
+    var iqCorrectCount = 0;
+    for(var i=1;i<=3;i++){ iqCorrectCount += parseInt(data.get('iq'+i)); }
+    var iqResult = "";
+    if(iqCorrectCount >= 3) {
+        iqResult = "<span class='lang-en'>High abstract reasoning ability (above average performance)</span><span class='lang-he'>יכולת חשיבה מופשטת גבוהה (ביצועים מעל לממוצע)</span>";
+    } else if(iqCorrectCount == 2) {
+        iqResult = "<span class='lang-en'>Average abstract reasoning ability</span><span class='lang-he'>יכולת חשיבה מופשטת ממוצעת</span>";
+    } else if(iqCorrectCount == 1) {
+        iqResult = "<span class='lang-en'>Below average abstract reasoning ability</span><span class='lang-he'>יכולת חשיבה מופשטת מתחת לממוצע</span>";
+    } else {
+        iqResult = "<span class='lang-en'>Significant difficulty with abstract reasoning</span><span class='lang-he'>קושי משמעותי בחשיבה מופשטת</span>";
+    }
+    document.getElementById('resIQ').innerHTML = iqResult;
+
+    document.getElementById('results').style.display = 'block';
+    // Scroll to results
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+};
+
+document.getElementById('printBtn').onclick = function() {
+    window.print();
+};
+</script>
+
+</body>
+</html>
