@@ -376,7 +376,8 @@ function showResults() {
 
   const reportData = langData[currentLang].report;
 
-  const summary = Object.entries(scores).map(([scale, values]) => {
+  let adhdCDetected = false;
+const summary = Object.entries(scores).map(([scale, values]) => {
     const avg = (values.reduce((a,b)=>a+b,0) / values.length);
     let levelKey;
     if (avg < 1.5) levelKey = 'None';
@@ -391,6 +392,22 @@ function showResults() {
   const insightsList = [];
 
   if (scores['ADHD-I'] && scores['Autism']) {
+  if (scores['ADHD-I'] && scores['ADHD-HI']) {
+    const adhdIAvg = avgScore(scores['ADHD-I']);
+    const adhdHIAvg = avgScore(scores['ADHD-HI']);
+    if (adhdIAvg > 2.5 && adhdHIAvg > 2.5) {
+      insightsList.push("⚠️ ADHD-C (Combined type) likely: significant traits in both inattentive and hyperactive-impulsive domains.");
+      adhdCDetected = true;
+      if (adhdIAvg > adhdHIAvg) {
+        insightsList.push("ℹ️ Stronger ADHD trait: Inattentive");
+      } else if (adhdHIAvg > adhdIAvg) {
+        insightsList.push("ℹ️ Stronger ADHD trait: Hyperactive-Impulsive");
+      } else {
+        insightsList.push("ℹ️ ADHD traits are equally strong in both domains.");
+      }
+    }
+  }
+
     const adhdAvg = avgScore(scores['ADHD-I']);
     const autismAvg = avgScore(scores['Autism']);
     if (adhdAvg > 2.5 && autismAvg > 2.5) {
@@ -400,7 +417,7 @@ function showResults() {
 
   for (const [scale, values] of Object.entries(scores)) {
     const avg = avgScore(values);
-    if (avg >= 2.5) {
+    if (avg >= 2.5 && !(adhdCDetected && (scale === 'ADHD-I' || scale === 'ADHD-HI'))) {
       insightsList.push(reportData.insightElevated.replace('{scale}', scale));
     }
   }
