@@ -1,7 +1,7 @@
 
 # NeuroPPS
 
-A fully offline, open-source self-assessment tool that screens for ADHD, Autism, OCD, Depression, Dyslexia, Executive Dysfunction, and Sensory Proccecing Disorder — with real-time scoring, PDF export, and full privacy.
+A fully private, open-source self-assessment tool that screens for ADHD, Autism, OCD, Depression, Dyslexia, Executive Dysfunction, and Sensory Proccecing Disorder — with real-time scoring, PDF export, and full privacy.
 
 ---
 
@@ -24,7 +24,7 @@ This tool allows anyone to screen themselves across multiple neurodevelopmental 
 ## 🚀 How to Use
 
 1. **Open the Application**  
-   Open the `neuro.html` file in your web browser.
+   Open megapandavip.github.io/NeuroPPS in your web browser.
 
 2. **Select Language**  
    By default, the screener starts in English. Click the `עברית` / `English` button in the top-left corner to toggle between languages.
