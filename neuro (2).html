@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroPPS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Base direction for LTR */
+    body { direction: ltr; }
+    /* Override for RTL when .rtl class is present */
+    .rtl { direction: rtl; text-align: right; }
+    /* Ensure the report container also respects direction inheritance */
+    #report { direction: inherit; }
+    /* Print styles */
+    @media print {
+      body * { visibility: hidden; }
+      #report, #report * { visibility: visible; }
+      #report { position: absolute; left: 0; top: 0; }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div id="app" class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+    <div class="flex justify-between items-center mb-4">
+      <div class="flex gap-2">
+        <button id="backBtn" class="px-3 py-1 bg-gray-300 text-gray-800 rounded hidden">← Back</button>
+        <button id="langToggle" class="px-3 py-1 bg-blue-500 text-white rounded">עברית</button>
+      </div>
+      <span id="progress" class="text-gray-600"></span>
+    </div>
+    <div id="question-container" class="mb-4">
+      <p id="question-text" class="text-xl font-semibold"></p>
+    </div>
+    <div class="space-y-2" id="options"></div>
+    <div id="result" class="hidden">
+      <div id="report" class="bg-white p-4 rounded border">
+        <h2 id="report-title" class="text-2xl font-bold mb-2"></h2>
+        <div class="text-sm text-gray-600 mb-4">
+          <p id="meta"></p>
+        </div>
+        <h3 id="domain-scores-title" class="font-semibold text-lg mb-1"></h3>
+        <div id="result-content" class="mb-4 text-sm"></div>
+        <h3 id="insights-title" class="font-semibold text-lg mb-1"></h3>
+        <div id="insights" class="space-y-2 text-sm"></div>
+        <p id="disclaimer" class="text-xs text-gray-500 mt-4"></p>
+      </div>
+      <div class="flex gap-2 mt-6">
+        <button id="retake-btn" onclick="location.reload()" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded"></button>
+        <button id="print-btn" onclick="window.print()" class="bg-green-500 text-white hover:bg-green-600 px-4 py-2 rounded"></button>
+      </div>
+    </div>
+  </div>
+<script>
+const langData = {
+  en: {
+    langBtn: "עברית",
+    backBtn: "← Back",
+    answers: ["Never", "Rarely", "Sometimes", "Often", "Very Often"],
+    questions: [
+      // ADHD-I & ADHD-HI
+      { q: "Trouble finishing tasks?", scale: "ADHD-I" },
+      { q: "Difficulty organizing?", scale: "ADHD-I" },
+      { q: "Forget appointments?", scale: "ADHD-I" },
+      { q: "Avoid tasks needing thought?", scale: "ADHD-I" },
+      { q: "Distracted by noise/activity?", scale: "ADHD-I" },
+      { q: "Fidget when seated?", scale: "ADHD-HI" },
+      { q: "Feel overly active?", scale: "ADHD-HI" },
+      { q: "Interrupt others?", scale: "ADHD-HI" },
+      { q: "Talk excessively?", scale: "ADHD-HI" },
+      { q: "Impatient waiting turn?", scale: "ADHD-HI" },
+      // Autism: Sensory & Social
+      { q: "Notice small sounds others miss?", scale: "Autism" },
+      { q: "Prefer routines?", scale: "Autism" },
+      { q: "Overwhelmed in crowds?", scale: "Autism" },
+      { q: "Collect specific items/info?", scale: "Autism" },
+      { q: "Hard to switch tasks?", scale: "Autism" },
+      { q: "Take things literally?", scale: "Autism" },
+      { q: "Struggle with facial expressions?", scale: "Autism" },
+      { q: "Hard to make friends?", scale: "Autism" },
+      { q: "Avoid eye contact?", scale: "Autism" },
+      { q: "Miss social cues?", scale: "Autism" },
+      // OCD (OCI-R)
+      { q: "Wash hands excessively?", scale: "OCD" },
+      { q: "Check things repeatedly?", scale: "OCD" },
+      { q: "Unwanted intrusive thoughts?", scale: "OCD" },
+      { q: "Upset by disordered objects?", scale: "OCD" },
+      { q: "Compelled to count or repeat?", scale: "OCD" },
+      { q: "Save unnecessary items?", scale: "OCD" },
+      { q: "Fear of contamination?", scale: "OCD" },
+      { q: "Need symmetry/order?", scale: "OCD" },
+      { q: "Avoid places due to fears?", scale: "OCD" },
+      { q: "Doubt past actions?", scale: "OCD" },
+      // GAD-7 Anxiety
+      { q: "Feeling nervous or anxious?", scale: "Anxiety" },
+      { q: "Unable to stop worrying?", scale: "Anxiety" },
+      { q: "Worrying too much?", scale: "Anxiety" },
+      { q: "Trouble relaxing?", scale: "Anxiety" },
+      { q: "Restlessness?", scale: "Anxiety" },
+      { q: "Easily annoyed?", scale: "Anxiety" },
+      { q: "Afraid something awful will happen?", scale: "Anxiety" },
+      // PHQ-9 Depression
+      { q: "Little interest or pleasure in doing things?", scale: "Depression" },
+      { q: "Feeling down or hopeless?", scale: "Depression" },
+      { q: "Trouble falling or staying asleep?", scale: "Depression" },
+      { q: "Feeling tired or low energy?", scale: "Depression" },
+      { q: "Poor appetite or overeating?", scale: "Depression" },
+      { q: "Feeling bad about yourself?", scale: "Depression" },
+      { q: "Trouble concentrating?", scale: "Depression" },
+      { q: "Moving/speaking slowly or restlessly?", scale: "Depression" },
+      { q: "Thoughts of self-harm?", scale: "Depression" },
+      // Sensory (SP-2 Short Form)
+      { q: "Dislike being touched unexpectedly?", scale: "Sensory" },
+      { q: "Bothered by clothing textures?", scale: "Sensory" },
+      { q: "Avoid loud environments?", scale: "Sensory" },
+      { q: "Overreact to smells?", scale: "Sensory" },
+      { q: "Dislike bright lights?", scale: "Sensory" },
+      { q: "Get startled easily?", scale: "Sensory" },
+      { q: "Bothered by food textures?", scale: "Sensory" },
+      { q: "Dislike sudden changes in movement?", scale: "Sensory" },
+      { q: "Sensitive to background noise?", scale: "Sensory" },
+      { q: "Avoid messy play or dirty hands?", scale: "Sensory" },
+      // Dyslexia (ARHQ)
+      { q: "Had difficulty learning to read?", scale: "Dyslexia" },
+      { q: "Trouble sounding out unfamiliar words?", scale: "Dyslexia" },
+      { q: "Often confused similar-looking words?", scale: "Dyslexia" },
+      { q: "Needed extra help with spelling in school?", scale: "Dyslexia" },
+      { q: "Avoid reading aloud?", scale: "Dyslexia" },
+      { q: "Take longer to read than peers?", scale: "Dyslexia" },
+      { q: "Skip or repeat lines when reading?", scale: "Dyslexia" },
+      { q: "Family history of reading difficulties?", scale: "Dyslexia" },
+      { q: "Find it hard to remember what you read?", scale: "Dyslexia" },
+      { q: "Mix up letters when writing (like b/d)?", scale: "Dyslexia" }
+    ],
+    report: {
+        title: "🧠 NeuroPPS Report",
+        metaPrefix: "Report generated on:",
+        domainScoresTitle: "📊 Domain Scores",
+        insightsTitle: "🔍 Insights",
+        disclaimer: "This screener is not a diagnosis. Consult a licensed clinician for further evaluation.",
+        retakeBtn: "🔄 Retake",
+        printPdfBtn: "🖨️ Print PDF",
+        levels: {
+            None: "None",
+            Mild: "Mild",
+            Moderate: "Moderate",
+            Severe: "Severe"
+        },
+        insightAuDHD: "⚠️ AuDHD overlap likely (combined ADHD + Autism traits)",
+        insightElevated: "⚠️ Elevated signs of {scale}",
+        insightNone: "No significant findings detected."
+    }
+  },
+  he: {
+    langBtn: "English",
+    backBtn: "→ חזור", // Changed direction for RTL
+    answers: ["אף פעם", "לעיתים רחוקות", "לפעמים", "לעיתים קרובות", "לעיתים קרובות מאוד"],
+    questions: [
+      // ADHD-I & ADHD-HI
+      { q: "מתקשה לסיים משימות?", scale: "ADHD-I" },
+      { q: "מתקשה להתארגן?", scale: "ADHD-I" },
+      { q: "שוכח/ת פגישות?", scale: "ADHD-I" },
+      { q: "נמנע/ת ממשימות הדורשות חשיבה?", scale: "ADHD-I" },
+      { q: "מוסח/ת מרעש/פעילות?", scale: "ADHD-I" },
+      { q: "מגלה חוסר שקט בישיבה?", scale: "ADHD-HI" },
+      { q: "מרגיש/ה פעיל/ה יתר על המידה?", scale: "ADHD-HI" },
+      { q: "מפריע/ה לאחרים?", scale: "ADHD-HI" },
+      { q: "מדבר/ת יתר על המידה?", scale: "ADHD-HI" },
+      { q: "חסר/ת סבלנות בהמתנה לתור?", scale: "ADHD-HI" },
+      // Autism: Sensory & Social
+      { q: "מבחין/ה בצלילים קטנים שאחרים מפספסים?", scale: "Autism" },
+      { q: "מעדיף/ה שגרות קבועות?", scale: "Autism" },
+      { q: "מוצף/ת בקהל?", scale: "Autism" },
+      { q: "אוסף/ת פריטים/מידע ספציפיים?", scale: "Autism" },
+      { q: "קשה לעבור בין משימות?", scale: "Autism" },
+      { q: "לוקח/ת דברים פשוטו כמשמעו?", scale: "Autism" },
+      { q: "מתקשה עם הבעות פנים?", scale: "Autism" },
+      { q: "קשה ליצור חברים?", scale: "Autism" },
+      { q: "נמנע/ת מקשר עין?", scale: "Autism" },
+      { q: "מפספס/ת רמזים חברתיים?", scale: "Autism" },
+      // OCD (OCI-R)
+      { q: "שוטף/ת ידיים יתר על המידה?", scale: "OCD" },
+      { q: "בודק/ת דברים שוב ושוב?", scale: "OCD" },
+      { q: "יש לך מחשבות פולשניות לא רצויות?", scale: "OCD" },
+      { q: "מוטרד/ת מחפצים לא מסודרים?", scale: "OCD" },
+      { q: "מוכרח/ה לספור או לחזור על דברים?", scale: "OCD" },
+      { q: "שומר/ת פריטים מיותרים?", scale: "OCD" },
+      { q: "פחד מזיהום?", scale: "OCD" },
+      { q: "זקוק/ה לסימטריה/סדר?", scale: "OCD" },
+      { q: "נמנע/ת ממקומות בגלל פחדים?", scale: "OCD" },
+      { q: "מטיל/ה ספק בפעולות עבר?", scale: "OCD" },
+      // GAD-7 Anxiety
+      { q: "מרגיש/ה עצבני/ת או חרד/ה?", scale: "Anxiety" },
+      { q: "לא מסוגל/ת להפסיק לדאוג?", scale: "Anxiety" },
+      { q: "דואג/ת יותר מדי?", scale: "Anxiety" },
+      { q: "מתקשה להירגע?", scale: "Anxiety" },
+      { q: "חוסר שקט?", scale: "Anxiety" },
+      { q: "מתעצבן/ת בקלות?", scale: "Anxiety" },
+      { q: "חושש/ת שמשהו נורא יקרה?", scale: "Anxiety" },
+      // PHQ-9 Depression
+      { q: "מעט עניין או הנאה בעשיית דברים?", scale: "Depression" },
+      { q: "מרגיש/ה מדוכא/ת או חסר/ת תקווה?", scale: "Depression" },
+      { q: "מתקשה להירדם או להישאר ישן/ה?", scale: "Depression" },
+      { q: "מרגיש/ה עייף/ה או בעל/ת אנרגיה נמוכה?", scale: "Depression" },
+      { q: "תיאבון ירוד או אכילת יתר?", scale: "Depression" },
+      { q: "מרגיש/ה רע/ה לגבי עצמך?", scale: "Depression" },
+      { q: "מתקשה להתרכז?", scale: "Depression" },
+      { q: "נע/ה/מדבר/ת לאט או בחוסר מנוחה?", scale: "Depression" },
+      { q: "מחשבות על פגיעה עצמית?", scale: "Depression" },
+      // Sensory (SP-2 Short Form)
+      { q: "לא אוהב/ת מגע בלתי צפוי?", scale: "Sensory" },
+      { q: "מוטרד/ת ממרקמי בגדים?", scale: "Sensory" },
+      { q: "נמנע/ת מסביבות רועשות?", scale: "Sensory" },
+      { q: "מגיב/ה יתר על המידה לריחות?", scale: "Sensory" },
+      { q: "לא אוהב/ת אורות בהירים?", scale: "Sensory" },
+      { q: "נבהל/ת בקלות?", scale: "Sensory" },
+      { q: "מוטרד/ת ממרקמי מזון?", scale: "Sensory" },
+      { q: "לא אוהב/ת שינויים פתאומיים בתנועה?", scale: "Sensory" },
+      { q: "רגיש/ה לרעשי רקע?", scale: "Sensory" },
+      { q: "נמנע/ת ממשחק מבולגן או ידיים מלוכלכות?", scale: "Sensory" },
+      // Dyslexia (ARHQ)
+      { q: "הייתה לך קושי ללמוד לקרוא?", scale: "Dyslexia" },
+      { q: "מתקשה להגות מילים לא מוכרות?", scale: "Dyslexia" },
+      { q: "מבלבל/ת לעיתים קרובות מילים שנראות דומות?", scale: "Dyslexia" },
+      { q: "היית זקוק/ה לעזרה נוספת באיות בבית הספר?", scale: "Dyslexia" },
+      { q: "נמנע/ת מקריאה בקול רם?", scale: "Dyslexia" },
+      { q: "לוקח/ת יותר זמן לקרוא מאשר בני גילך?", scale: "Dyslexia" },
+      { q: "מדלג/ת או חוזר/ת על שורות בעת קריאה?", scale: "Dyslexia" },
+      { q: "היסטוריה משפחתית של קשיי קריאה?", scale: "Dyslexia" },
+      { q: "קשה לך לזכור מה קראת?", scale: "Dyslexia" },
+      { q: "מבלבל/ת אותיות בכתיבה (כמו ב'/ד')?", scale: "Dyslexia" }
+    ],
+    report: {
+        title: "🧠 דוח NeuroPPS",
+        metaPrefix: "הדוח נוצר בתאריך:",
+        domainScoresTitle: "📊 תוצאות",
+        insightsTitle: "🔍 תובנות",
+        disclaimer: "כלי סריקה זה אינו אבחנה. יש להתייעץ עם קלינאי מורשה להערכה נוספת.",
+        retakeBtn: "🔄 התחל מחדש",
+        printPdfBtn: "🖨️ הדפס PDF",
+        levels: {
+            None: "אין",
+            Mild: "קל",
+            Moderate: "בינוני",
+            Severe: "חמור"
+        },
+        insightAuDHD: "⚠️ סבירות לחפיפה של AuDHD (שילוב של תכונות ADHD + אוטיזם)",
+        insightElevated: "⚠️ סימנים מוגברים של {scale}",
+        insightNone: "לא נמצאו ממצאים משמעותיים."
+    }
+  }
+};
+
+let currentLang = 'en';
+let questionIndex = 0;
+let responses = [];
+
+const progress = document.getElementById('progress');
+const questionText = document.getElementById('question-text');
+const options = document.getElementById('options');
+const questionContainer = document.getElementById('question-container');
+const result = document.getElementById('result');
+const resultContent = document.getElementById('result-content');
+const insights = document.getElementById('insights');
+
+// Report elements
+const reportTitle = document.getElementById('report-title');
+const meta = document.getElementById('meta');
+const domainScoresTitle = document.getElementById('domain-scores-title');
+const insightsTitle = document.getElementById('insights-title');
+const disclaimer = document.getElementById('disclaimer');
+const retakeBtn = document.getElementById('retake-btn');
+const printBtn = document.getElementById('print-btn');
+const backBtn = document.getElementById('backBtn'); // Get the back button element
+
+/**
+ * Updates the HTML lang attribute and applies RTL/LTR direction classes
+ * to the body and main app container based on the current language.
+ */
+function updateLanguageAndDirection() {
+    document.documentElement.lang = currentLang; // Update html lang attribute
+    document.body.classList.toggle('rtl', currentLang === 'he');
+    document.getElementById('app').classList.toggle('rtl', currentLang === 'he');
+    document.getElementById('langToggle').innerText = langData[currentLang].langBtn;
+    backBtn.innerText = langData[currentLang].backBtn; // Update back button text
+}
+
+/**
+ * Renders the current question and its answer options based on the active language.
+ */
+function renderQuestion() {
+  const qData = langData[currentLang];
+  const question = qData.questions[questionIndex];
+  questionText.innerText = question.q;
+  progress.innerText = `${questionIndex + 1} / ${qData.questions.length}`;
+  options.innerHTML = '';
+
+  // Show/hide back button
+  if (questionIndex > 0) {
+    backBtn.classList.remove('hidden');
+  } else {
+    backBtn.classList.add('hidden');
+  }
+
+  qData.answers.forEach((answer, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'block w-full bg-blue-100 hover:bg-blue-200 text-left px-4 py-2 rounded';
+    btn.innerText = answer;
+    btn.onclick = () => {
+      responses.push({ scale: question.scale, value: i });
+      questionIndex++;
+      if (questionIndex < qData.questions.length) renderQuestion();
+      else showResults();
+    };
+    options.appendChild(btn);
+  });
+}
+
+// Event listener for language toggle button
+document.getElementById('langToggle').onclick = () => {
+  currentLang = currentLang === 'en' ? 'he' : 'en';
+  updateLanguageAndDirection(); // Update language and direction
+  // If the report is already visible, re-render it with the new language
+  if (!result.classList.contains('hidden')) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+};
+
+// Event listener for back button
+backBtn.onclick = () => {
+  if (questionIndex > 0) {
+    questionIndex--;
+    responses.pop(); // Remove the last response
+    renderQuestion();
+  }
+};
+
+/**
+ * Renders the static text elements of the report (titles, disclaimer, buttons)
+ * based on the current language.
+ */
+function renderReportStaticText() {
+    const reportData = langData[currentLang].report;
+    reportTitle.innerText = reportData.title;
+    domainScoresTitle.innerText = reportData.domainScoresTitle;
+    insightsTitle.innerText = reportData.insightsTitle;
+    disclaimer.innerText = reportData.disclaimer;
+    retakeBtn.innerText = reportData.retakeBtn;
+    printBtn.innerText = reportData.printPdfBtn;
+
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    const formattedDate = today.toLocaleDateString(currentLang === 'he' ? 'he-IL' : 'en-US', options);
+    meta.innerText = `${reportData.metaPrefix} ${formattedDate}`;
+}
+
+/**
+ * Calculates and displays the results of the screener, including domain scores
+ * and insights, in the currently selected language.
+ */
+function showResults() {
+  questionContainer.style.display = 'none';
+  options.style.display = 'none';
+  result.classList.remove('hidden');
+  backBtn.classList.add('hidden'); // Hide back button when report is shown
+
+  renderReportStaticText(); // Render static text for the report
+
+  const scores = {};
+  responses.forEach(r => {
+    if (!scores[r.scale]) scores[r.scale] = [];
+    scores[r.scale].push(r.value);
+  });
+
+  const reportData = langData[currentLang].report;
+
+  let adhdCDetected = false;
+const summary = Object.entries(scores).map(([scale, values]) => {
+    const avg = (values.reduce((a,b)=>a+b,0) / values.length);
+    let levelKey;
+    if (avg < 1.5) levelKey = 'None';
+    else if (avg < 2.5) levelKey = 'Mild';
+    else if (avg < 3.5) levelKey = 'Moderate';
+    else levelKey = 'Severe';
+    const level = reportData.levels[levelKey];
+    return `<div><strong>${scale}</strong>: ${avg.toFixed(2)} (${level})</div>`;
+  }).join('');
+  resultContent.innerHTML = summary;
+
+  const insightsList = [];
+
+  if (scores['ADHD-I'] && scores['Autism']) {
+  if (scores['ADHD-I'] && scores['ADHD-HI']) {
+    const adhdIAvg = avgScore(scores['ADHD-I']);
+    const adhdHIAvg = avgScore(scores['ADHD-HI']);
+    if (adhdIAvg > 2.5 && adhdHIAvg > 2.5) {
+      insightsList.push("⚠️ ADHD-C (Combined type) likely: significant traits in both inattentive and hyperactive-impulsive domains.");
+      adhdCDetected = true;
+      if (adhdIAvg > adhdHIAvg) {
+        insightsList.push("ℹ️ Stronger ADHD trait: Inattentive");
+      } else if (adhdHIAvg > adhdIAvg) {
+        insightsList.push("ℹ️ Stronger ADHD trait: Hyperactive-Impulsive");
+      } else {
+        insightsList.push("ℹ️ ADHD traits are equally strong in both domains.");
+      }
+    }
+  }
+
+    const adhdAvg = avgScore(scores['ADHD-I']);
+    const autismAvg = avgScore(scores['Autism']);
+    if (adhdAvg > 2.5 && autismAvg > 2.5) {
+      insightsList.push(reportData.insightAuDHD);
+    }
+  }
+
+  for (const [scale, values] of Object.entries(scores)) {
+    const avg = avgScore(values);
+    if (avg >= 2.5 && !(adhdCDetected && (scale === 'ADHD-I' || scale === 'ADHD-HI'))) {
+      insightsList.push(reportData.insightElevated.replace('{scale}', scale));
+    }
+  }
+
+  insights.innerHTML = insightsList.length ? insightsList.map(i => `<p>${i}</p>`).join('') : `<p>${reportData.insightNone}</p>`;
+}
+
+/**
+ * Calculates the average score for an array of values.
+ * @param {number[]} arr - An array of numerical scores.
+ * @returns {number} The average score.
+ */
+function avgScore(arr) {
+  return arr.reduce((a,b)=>a+b,0)/arr.length;
+}
+
+// Initial setup when the page loads
+updateLanguageAndDirection();
+renderQuestion();
+</script>
+</body>
+</html>
