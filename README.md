@@ -24,7 +24,7 @@ This tool allows anyone to screen themselves across multiple neurodevelopmental 
 ## 🚀 How to Use
 
 1. **Open the Application**  
-   Open megapandavip.github.io/NeuroPPS in your web browser.
+   Open https://megapandavip.github.io/NeuroPPS in your web browser.
 
 2. **Select Language**  
    By default, the screener starts in English. Click the `עברית` / `English` button in the top-left corner to toggle between languages.
