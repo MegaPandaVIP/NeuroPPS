@@ -3,6 +3,10 @@
 
 A fully private, open-source self-assessment tool that screens for ADHD, Autism, OCD, Depression, Dyslexia, Executive Dysfunction, and Sensory Proccecing Disorder — with real-time scoring, PDF export, and full privacy.
 
+## 🌍 החלף שפה | Switch Language
+
+- [English README](README.md)
+- [Hebrew README](README.he.md)
 ---
 
 ## 💡 Overview
