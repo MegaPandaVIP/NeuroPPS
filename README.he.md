@@ -7,7 +7,7 @@
 
 ---
 
-## 🌍 החלף שפה | 
+##| 🌍 החלף שפה 
 
 - [English README](README.md)
 - [Hebrew README](README.he.md)
