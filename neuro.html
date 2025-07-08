@@ -70,16 +70,16 @@ const langData = {
       { q: "Talk excessively?", scale: "ADHD-HI" },
       { q: "Impatient waiting turn?", scale: "ADHD-HI" },
       // Autism: Sensory & Social
-      { q: "Notice small sounds others miss?", scale: "Autism-Sensory" },
-      { q: "Prefer routines?", scale: "Autism-Sensory" },
-      { q: "Overwhelmed in crowds?", scale: "Autism-Sensory" },
-      { q: "Collect specific items/info?", scale: "Autism-Sensory" },
-      { q: "Hard to switch tasks?", scale: "Autism-Sensory" },
-      { q: "Take things literally?", scale: "Autism-Social" },
-      { q: "Struggle with facial expressions?", scale: "Autism-Social" },
-      { q: "Hard to make friends?", scale: "Autism-Social" },
-      { q: "Avoid eye contact?", scale: "Autism-Social" },
-      { q: "Miss social cues?", scale: "Autism-Social" },
+      { q: "Notice small sounds others miss?", scale: "Autism" },
+      { q: "Prefer routines?", scale: "Autism" },
+      { q: "Overwhelmed in crowds?", scale: "Autism" },
+      { q: "Collect specific items/info?", scale: "Autism" },
+      { q: "Hard to switch tasks?", scale: "Autism" },
+      { q: "Take things literally?", scale: "Autism" },
+      { q: "Struggle with facial expressions?", scale: "Autism" },
+      { q: "Hard to make friends?", scale: "Autism" },
+      { q: "Avoid eye contact?", scale: "Autism" },
+      { q: "Miss social cues?", scale: "Autism" },
       // OCD (OCI-R)
       { q: "Wash hands excessively?", scale: "OCD" },
       { q: "Check things repeatedly?", scale: "OCD" },
@@ -168,16 +168,16 @@ const langData = {
       { q: "מדבר/ת יתר על המידה?", scale: "ADHD-HI" },
       { q: "חסר/ת סבלנות בהמתנה לתור?", scale: "ADHD-HI" },
       // Autism: Sensory & Social
-      { q: "מבחין/ה בצלילים קטנים שאחרים מפספסים?", scale: "Autism-Sensory" },
-      { q: "מעדיף/ה שגרות קבועות?", scale: "Autism-Sensory" },
-      { q: "מוצף/ת בקהל?", scale: "Autism-Sensory" },
-      { q: "אוסף/ת פריטים/מידע ספציפיים?", scale: "Autism-Sensory" },
-      { q: "קשה לעבור בין משימות?", scale: "Autism-Sensory" },
-      { q: "לוקח/ת דברים פשוטו כמשמעו?", scale: "Autism-Social" },
-      { q: "מתקשה עם הבעות פנים?", scale: "Autism-Social" },
-      { q: "קשה ליצור חברים?", scale: "Autism-Social" },
-      { q: "נמנע/ת מקשר עין?", scale: "Autism-Social" },
-      { q: "מפספס/ת רמזים חברתיים?", scale: "Autism-Social" },
+      { q: "מבחין/ה בצלילים קטנים שאחרים מפספסים?", scale: "Autism" },
+      { q: "מעדיף/ה שגרות קבועות?", scale: "Autism" },
+      { q: "מוצף/ת בקהל?", scale: "Autism" },
+      { q: "אוסף/ת פריטים/מידע ספציפיים?", scale: "Autism" },
+      { q: "קשה לעבור בין משימות?", scale: "Autism" },
+      { q: "לוקח/ת דברים פשוטו כמשמעו?", scale: "Autism" },
+      { q: "מתקשה עם הבעות פנים?", scale: "Autism" },
+      { q: "קשה ליצור חברים?", scale: "Autism" },
+      { q: "נמנע/ת מקשר עין?", scale: "Autism" },
+      { q: "מפספס/ת רמזים חברתיים?", scale: "Autism" },
       // OCD (OCI-R)
       { q: "שוטף/ת ידיים יתר על המידה?", scale: "OCD" },
       { q: "בודק/ת דברים שוב ושוב?", scale: "OCD" },
@@ -390,9 +390,9 @@ function showResults() {
 
   const insightsList = [];
 
-  if (scores['ADHD-I'] && scores['Autism-Social']) {
+  if (scores['ADHD-I'] && scores['Autism']) {
     const adhdAvg = avgScore(scores['ADHD-I']);
-    const autismAvg = avgScore(scores['Autism-Social']);
+    const autismAvg = avgScore(scores['Autism']);
     if (adhdAvg > 2.5 && autismAvg > 2.5) {
       insightsList.push(reportData.insightAuDHD);
     }
