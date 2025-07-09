@@ -385,7 +385,7 @@ const summary = Object.entries(scores).map(([scale, values]) => {
     else if (avg < 3.5) levelKey = 'Moderate';
     else levelKey = 'Severe';
     const level = reportData.levels[levelKey];
-    return `<div><strong>${scale}</strong>: ${avg.toFixed(2)} (${level})</div>`;
+    const displayName = scale === "Sensory" ? "Sensory Processing Disorder" : scale; return `<div><strong>${displayName}</strong>: ${avg.toFixed(2)} (${level})</div>`;
   }).join('');
   resultContent.innerHTML = summary;
 
