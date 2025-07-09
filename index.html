@@ -228,7 +228,7 @@ const langData = {
       { q: "מדלג/ת או חוזר/ת על שורות בעת קריאה?", scale: "Dyslexia" },
       { q: "היסטוריה משפחתית של קשיי קריאה?", scale: "Dyslexia" },
       { q: "קשה לך לזכור מה קראת?", scale: "Dyslexia" },
-      { q: "מבלבל/ת אותיות בכתיבה (כמו ו'/ן')?", scale: "Dyslexia" }
+      { q: "מבלבל/ת אותיות בכתיבה (כמו ן'/ו')?", scale: "Dyslexia" }
     ],
     report: {
         title: "🧠 דוח NeuroPPS",
@@ -252,6 +252,18 @@ const langData = {
 };
 
 let currentLang = 'en';
+
+const wikiLinks = {
+  "ADHD-I": "https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder",
+  "ADHD-HI": "https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder",
+  "Autism": "https://en.wikipedia.org/wiki/Autism_spectrum",
+  "OCD": "https://en.wikipedia.org/wiki/Obsessive–compulsive_disorder",
+  "Anxiety": "https://en.wikipedia.org/wiki/Generalized_anxiety_disorder",
+  "Depression": "https://en.wikipedia.org/wiki/Major_depressive_disorder",
+  "Sensory": "https://en.wikipedia.org/wiki/Sensory_processing_disorder",
+  "Dyslexia": "https://en.wikipedia.org/wiki/Dyslexia"
+};
+
 let questionIndex = 0;
 let responses = [];
 
@@ -385,7 +397,8 @@ const summary = Object.entries(scores).map(([scale, values]) => {
     else if (avg < 3.5) levelKey = 'Moderate';
     else levelKey = 'Severe';
     const level = reportData.levels[levelKey];
-    const displayName = scale === "Sensory" ? "Sensory Processing Disorder" : scale; return `<div><strong>${displayName}</strong>: ${avg.toFixed(2)} (${level})</div>`;
+    const displayName = scale === 'Sensory' ? 'Sensory Processing Disorder' : scale;
+    return `<div><strong>${displayName}</strong>: ${avg.toFixed(2)} (${level})</div>`;
   }).join('');
   resultContent.innerHTML = summary;
 
@@ -418,7 +431,10 @@ const summary = Object.entries(scores).map(([scale, values]) => {
   for (const [scale, values] of Object.entries(scores)) {
     const avg = avgScore(values);
     if (avg >= 2.5 && !(adhdCDetected && (scale === 'ADHD-I' || scale === 'ADHD-HI'))) {
-      const displayScale = scale === "Sensory" ? "Sensory Processing Disorder" : scale; insightsList.push(reportData.insightElevated.replace('{scale}', displayScale));
+      const displayScale = scale === 'Sensory' ? (currentLang === 'he' ? 'Sensory Processing Disorder' : 'Sensory Processing Disorder') : scale;
+      const wikiUrl = wikiLinks[scale] || '#';
+      const link = `<a href='${wikiUrl}' target='_blank' class='text-blue-600 underline'>${displayScale}</a>`;
+      insightsList.push(reportData.insightElevated.replace('{scale}', link));
     }
   }
 
