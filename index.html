@@ -418,7 +418,7 @@ const summary = Object.entries(scores).map(([scale, values]) => {
   for (const [scale, values] of Object.entries(scores)) {
     const avg = avgScore(values);
     if (avg >= 2.5 && !(adhdCDetected && (scale === 'ADHD-I' || scale === 'ADHD-HI'))) {
-      insightsList.push(reportData.insightElevated.replace('{scale}', scale));
+      const displayScale = scale === "Sensory" ? "Sensory Processing Disorder" : scale; insightsList.push(reportData.insightElevated.replace('{scale}', displayScale));
     }
   }
 
