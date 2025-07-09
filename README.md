@@ -15,7 +15,7 @@ This tool allows anyone to screen themselves across multiple neurodevelopmental 
 - ✅ No sign-up
 - ✅ No servers
 - ✅ No tracking
-- ✅ Fully local
+- ✅ Fully private
 
 > **Disclaimer:**  
 > This screener is for informational purposes only and is **not a diagnostic tool**. For a formal diagnosis or professional advice, please consult a licensed clinician.
