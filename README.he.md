@@ -4,7 +4,6 @@
 # NeuroPPS
 
 
----
 - [English README](README.md)
 
 ---
